@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="_Odfmz1_KNG-MB6IOAJ5s_Q7U2xUVzNvR6sYIP8MFSM" />
+    
+    <title>Portofolio Lintang Nazril Maulana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: linear-gradient(180deg, #5163e1 0%, #9b84f3 40%, #76d0f9 75%, #f286ab 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Navigasi Atas & Search */
+        .top-nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            font-size: 32px;
+            color: #000;
+            z-index: 100;
+        }
+
+        .search-container {
+            position: absolute;
+            right: 60px;
+            background: white;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: none;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .search-container input {
+            border: none;
+            outline: none;
+            width: 120px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #home-page { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .header-text { text-align: center; margin-top: 15px; }
+        .header-text h1 { font-size: 21px; font-weight: 800; text-transform: uppercase; }
+        .header-text p { font-size: 13px; font-weight: 600; margin-top: 5px; opacity: 0.95; }
+
+        .profile-section {
+            position: relative;
+            margin-top: 40px;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; z-index: 2; border: 3px solid white; }
+        
+        /* EFEK BERPUTAR PADA RING */
+        .outer-ring {
+            position: absolute; width: 245px; height: 245px; border: 5px solid white; border-radius: 50%;
+            clip-path: polygon(0% 15%, 100% 0%, 100% 85%, 0% 100%); 
+            z-index: 1;
+            animation: rotateRing 4s linear infinite; /* Menambahkan animasi putar */
+        }
+
+        @keyframes rotateRing {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Halaman Sub */
+        .sub-page {
+            display: none;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+
+        .sub-page h2 { margin-bottom: 15px; font-size: 1.2rem; text-align: center; border-bottom: 2px solid white; padding-bottom: 5px;}
+        .sub-page p { font-family: 'Open Sans'; font-size: 13px; line-height: 1.6; text-align: justify; margin-bottom: 10px; }
+
+        .featured-project { background: rgba(255, 255, 255, 0.9); color: #333; padding: 15px; border-radius: 12px; margin-bottom: 20px; }
+        .featured-project h3 { font-size: 16px; color: #5163e1; margin-bottom: 8px; }
+        .btn-demo { display: inline-block; background: #000; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 11px; font-weight: bold; margin-top: 10px;}
+
+        .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .work-card { background: white; border-radius: 8px; overflow: hidden; color: #333; }
+        .work-card img { width: 100%; height: 90px; object-fit: cover; }
+        .work-card h4 { font-size: 10px; padding: 5px; text-align: center; }
+
+        .button-group { display: flex; gap: 10px; margin-top: 30px; margin-bottom: 20px; }
+        .btn { background: white; color: black; padding: 12px 20px; border-radius: 30px; font-size: 12px; font-weight: 800; cursor: pointer; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn.active { background: #000; color: white; }
+
+        .social-footer { margin-top: auto; margin-bottom: 30px; display: flex; gap: 25px; }
+        .social-footer a { font-size: 40px; text-decoration: none; }
+        .fa-linkedin { color: #0077B5; }
+        .fa-instagram { background: linear-gradient(45deg, #f09433, #bc1888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .fa-github { color: #181717; }
+    </style>
+</head>
+<body>
+
+    <div class="phone-screen">
+        <div class="top-nav">
+            <i class="fas fa-bars" onclick="showPage('home')" style="cursor: pointer;"></i>
+            <div class="search-container" id="searchBox">
+                <input type="text" id="searchInput" placeholder="Cari..." onkeyup="handleSearch(event)">
+            </div>
+            <i class="fas fa-search" onclick="toggleSearch()" style="cursor: pointer;"></i>
+        </div>
+
+        <div class="content-wrapper">
+            <div id="home-page">
+                <div class="header-text">
+                    <h1>LINTANG NAZRIL MAULANA</h1>
+                    <p>FRONT-END & WEB DEVELOPER</p>
+                </div>
+                <div class="profile-section">
+                    <div class="outer-ring"></div>
+                    <img src="https://i.ibb.co.com/yc6qgt66/11601-11zon.jpg" class="profile-img">
+                </div>
+            </div>
+
+            <div id="work-page" class="sub-page">
+                <h2>My Work</h2>
+                <div class="featured-project">
+                    <h3>Web-to-Telegram Bridge</h3>
+                    <p style="color:#333; font-size: 11px; text-align: left;">Automated Visual Capture System menggunakan JavaScript murni dan Telegram API.</p>
+                    <a href="https://lintangnazril104-maker.github.io/Kamera-Webcam/" target="_blank" class="btn-demo">LIHAT DEMO</a>
+                </div>
+                <div class="work-grid">
+                    <div class="work-card"><img src="https://i.ibb.co.com/mr0hkJ33/Screenshot-2026-01-09-20-29-04-20-40deb401b9ffe8e1df2f1cc5ba480b12.jpg"><h4>Interface</h4></div>
+                    <div class="work-card"><img src="https://i.ibb.co.com/WvS3QSGC/Screenshot-2026-01-09-20-29-19-07-948cd9899890cbd5c2798760b2b95377.jpg"><h4>Result</h4></div>
+                </div>
+            </div>
+
+            <div id="about-page" class="sub-page">
+                <h2>Tentang Saya</h2>
+                <p>Halo! Saya seorang pengembang web yang senang mengubah baris kode menjadi pengalaman visual yang menarik. Sebagai Front-End Developer, saya tidak hanya membangun tampilan, tetapi juga memastikan setiap elemen bekerja dengan logika yang tepat untuk membantu pengguna.</p>
+                <p>Saya senang bereksperimen dengan teknologi web modern, mulai dari desain layout yang presisi menggunakan HTML & CSS hingga pemrosesan data di sisi klien menggunakan JavaScript.</p>
+            </div>
+
+            <div id="contact-page" class="sub-page">
+                <h2>Contact Me</h2>
+                <div style="text-align: center;">
+                    <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> lintangnazril104@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kertaraharja, Banjarsari,<br>Lebak - Banten</p>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn" id="btn-work" onclick="showPage('work', this)">WORK</button>
+                <button class="btn" id="btn-about" onclick="showPage('about', this)">ABOUT</button>
+                <button class="btn" id="btn-contact" onclick="showPage('contact', this)">CONTACT</button>
+            </div>
+        </div>
+
+        <div class="social-footer">
+            <a href="https://www.linkedin.com/in/lintang-nazril-14279b330" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/azill361?utm_source=qr&igsh=djV3MDhuN21nOTU2" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/lintangnazril104-maker" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId, btn) {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('work-page').style.display = 'none';
+            document.getElementById('about-page').style.display = 'none';
+            document.getElementById('contact-page').style.display = 'none';
+            
+            const btns = document.querySelectorAll('.btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            if(pageId === 'home') {
+                document.getElementById('home-page').style.display = 'flex';
+            } else {
+                document.getElementById(pageId + '-page').style.display = 'block';
+                if(btn) btn.classList.add('active');
+            }
+        }
+
+        function toggleSearch() {
+            const box = document.getElementById('searchBox');
+            box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+            if(box.style.display === 'flex') document.getElementById('searchInput').focus();
+        }
+
+        function handleSearch(event) {
+            if (event.key === "Enter") {
+                const query = event.target.value.toLowerCase();
+                if (query.includes("work") || query.includes("projek") || query.includes("kamera")) {
+                    showPage('work', document.getElementById('btn-work'));
+                } else if (query.includes("about") || query.includes("saya") || query.includes("tentang")) {
+                    showPage('about', document.getElementById('btn-about'));
+                } else if (query.includes("contact") || query.includes("hubungi") || query.includes("email")) {
+                    showPage('contact', document.getElementById('btn-contact'));
+                }
+                toggleSearch();
+            }
+        }
+    </script>
+</body>
+</html>
